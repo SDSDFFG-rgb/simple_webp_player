@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>AIRCORE DEFENSE</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="wrap"><div id="gameShell">
+<canvas id="game" width="1600" height="900"></canvas>
+<div id="hud">
+  <div id="topbar">
+    <div id="corePanel" class="panel">
+      <div class="row"><div><div class="label">CORE</div><div class="small">航空中枢艦</div></div>
+        <div class="meter"><i id="coreFill"></i></div><div id="corePct">100%</div></div>
+    </div>
+    <div id="stagePanel">
+      <div class="chip panel"><span id="waveText">WAVE 01/05</span></div>
+      <div id="scrapChip" class="chip panel">⚙ SCRAP <strong id="scrapText">0</strong></div>
+    </div>
+  </div>
+  <div id="bossWrap"><span id="bossLabel">BOSS</span><div id="bossMeter"><i id="bossFill"></i></div></div>
+  <div id="buttons"><button id="pauseBtn" class="uiBtn">PAUSE</button><button id="loadoutBtn" class="uiBtn gold">LOADOUT [L]</button></div>
+  <div id="message"></div><div id="toast"></div>
+  <div id="bottomLeft" class="panel"><b>自機（CORE）</b><span class="small">W/S・↑/↓ またはマウスで上下移動。<br>武装は自動射撃。敵ミサイルはCIWSが迎撃。</span></div>
+  <div id="weaponTray" class="panel"></div>
+  <div id="miniMap" class="panel"><canvas id="miniCanvas" width="214" height="76"></canvas></div>
+</div>
+
+<div id="startScreen" class="overlay">
+  <div class="card">
+    <h1><span>AIRCORE</span> DEFENSE</h1>
+    <p>固定された航空中枢艦を守りながら右方向から侵攻する敵編隊を撃破する、ウェーブ制オートファイア・ディフェンス。9つのハードポイントをロードアウトし、敵ミサイルをCIWSで落とし、5ウェーブ目のボスを撃破すると次ステージへ進みます。</p>
+    <div class="controls">
+      <div><kbd>W</kbd>/<kbd>S</kbd>・<kbd>↑</kbd>/<kbd>↓</kbd> 上下移動</div>
+      <div><kbd>L</kbd> ロードアウト</div>
+      <div>MISSILE：二段階点火ホーミング</div>
+      <div>CIWS：敵ミサイル自動迎撃</div>
+    </div>
+    <div class="startActions"><button id="startBtn" class="bigBtn">出撃する</button><button id="startLoadoutBtn" class="bigBtn">ロードアウトを見る</button></div>
+  </div>
+</div>
+
+<div id="loadout" class="overlay">
+  <div class="card">
+    <div class="loadoutTop"><div><h2 style="margin:0">LOADOUT — 9 HARDPOINTS</h2><p style="margin:.4em 0 0">スロットを選び、下の武器をクリックして換装。ゲーム中に開くと自動的にポーズします。</p></div>
+      <button id="repairBtn" class="uiBtn gold">CORE REPAIR<br><small>25 SCRAP / +20%</small></button></div>
+    <div id="loadoutGrid"></div>
+    <div id="palette"></div>
+    <div class="startActions"><button id="closeLoadoutBtn" class="bigBtn">戦闘へ戻る</button></div>
+  </div>
+</div>
+
+<div id="gameOver" class="overlay"><div class="card"><h1 class="warn">CORE LOST</h1><p>中枢艦が破壊されました。</p><button id="retryBtn" class="bigBtn">再出撃</button></div></div>
+<div id="victory" class="overlay"><div class="card"><h1 class="good">STAGE CLEAR</h1><p id="victoryText"></p><button id="nextStageBtn" class="bigBtn">次のステージへ</button></div></div>
+</div></div>
+
+<script src="game1.js"></script>
+<script src="game2.js"></script>
+<script src="game3.js"></script>
+<script src="game4.js"></script>
+</body>
+</html>
